@@ -1,13 +1,12 @@
 package tests;
 
-import io.restassured.RestAssured;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
+import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
-import static io.restassured.RestAssured.given;
 
 public class WdHubStatusTests extends TestBase {
     @Test
@@ -16,7 +15,7 @@ public class WdHubStatusTests extends TestBase {
                 .log().all()
                 .auth().basic("user1", "1234")
                 .when()
-                .get("https://selenoid.autotests.cloud/wd/hub/status")
+                .get("/status")
                 .then()
                 .log().all()
                 .statusCode(200)
@@ -30,7 +29,7 @@ public class WdHubStatusTests extends TestBase {
                 .log().all()
                 .auth().basic("user1", "1234")
                 .when()
-                .get("https://selenoid.autotests.cloud/wd/hub/status")
+                .get("/status")
                 .then()
                 .log().all()
                 .statusCode(200)
@@ -43,7 +42,7 @@ public class WdHubStatusTests extends TestBase {
                 .log().all()
                 .auth().basic("user1", "1234")
                 .when()
-                .get("https://selenoid.autotests.cloud/wd/hub/status")
+                .get("/status")
                 .then()
                 .log().all()
                 .statusCode(200)
@@ -57,7 +56,7 @@ public class WdHubStatusTests extends TestBase {
         given()
                 .log().all()
                 .when()
-                .get("/wd/hub/status")
+                .get("/status")
                 .then()
                 .log().all()
                 .statusCode(401)
@@ -71,7 +70,7 @@ public class WdHubStatusTests extends TestBase {
                 .log().all()
                 .auth().basic("wronguser", "wrongpassword")
                 .when()
-                .get("/wd/hub/status")
+                .get("/status")
                 .then()
                 .log().all()
                 .statusCode(401);

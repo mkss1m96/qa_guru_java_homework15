@@ -7,5 +7,6 @@ public class TestBase {
     @BeforeAll
     public static void setUp() {
         RestAssured.baseURI = "https://selenoid.autotests.cloud";
+        RestAssured.basePath = "/wd/hub";
     }
 }
